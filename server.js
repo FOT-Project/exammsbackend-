@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import HomeRouter from "./routes/home.route.js";
+import UserRouter from './routes/user.route.js';
 
 // load environment variables
 import dotenv from 'dotenv';
@@ -24,7 +25,8 @@ app.use(cors());
 app.use(express.json());
 
 // handle routes
-app.use("/", HomeRouter)
+app.use("/", HomeRouter);
+app.use("/users", UserRouter);
 
 // handle 404 errors
 // This middlware hit, if not any routes is matched.
@@ -32,5 +34,35 @@ app.use(({ res }) => {
     res.status(404).json({ message: 'Not Found' });
 });
 
+// Define a custom error class for application-specific errors
+class AppError extends Error {
+    constructor(message, status) {
+        super(message);
+        this.status = status;
+    }
+}
+
+// Centralized error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack); // Log the error stack for debugging
+
+    // Handle application-specific errors
+    if (err instanceof AppError) {
+        return res.status(err.status).json({
+            error: {
+                message: err.message,
+            },
+        });
+    }
+
+    // Handle generic errors
+    res.status(500).json({
+        error: {
+            message: 'Internal Server Error',
+        },
+    });
+});
+
 export default app;
+export { AppError };
 
