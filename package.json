@@ -1,0 +1,34 @@
+{
+  "name": "express-api-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon bin/www.js",
+    "start": "node bin/www.js",
+    "test": "jest",
+    "migrate": "sequelize db:migrate",
+    "migrate:create": "sequelize migration:create --name ",
+    "migrate:undo": "sequelize db:migrate:undo",
+    "migrate:undo:all": "sequelize db:migrate:undo:all",
+    "seed": "npx sequelize-cli db:seed:all",
+    "seed:create": "npx sequelize-cli seed:generate --name",
+    "seed:undo": "npx sequelize-cli db:seed:undo",
+    "seed:undo:all": "npx sequelize-cli db:seed:undo:all",
+    "seed:run": "npx sequelize-cli db:seed --seed "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.7"
+  },
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
