@@ -9,6 +9,7 @@ export const up = async (queryInterface, Sequelize) => {
       name: 'Alice Smith',
       email: 'alice@example.com',
       password: 'password123',
+      role:'admin',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -16,6 +17,7 @@ export const up = async (queryInterface, Sequelize) => {
       name: 'Bob Johnson',
       email: 'bob@example.com',
       password: 'password456',
+      role:'invigilator',
       createdAt: new Date(),
       updatedAt: new Date()
     }

@@ -11,18 +11,17 @@ const UserController = {
         }
     },
 
-    async getUserById(req, res, next) {
-        try {
-            const user = await UserService.getUserById(req.params.id);
-            if (user) {
-                res.status(200).json(user);
-            } else {
-                next(new AppError('User not found', 404));
-            }
-        } catch (error) {
-            next(new AppError(error.message, 500));
+  async getUserById(req, res, next) {
+    try {
+        const user = await UserService.getUserById(req.params.id);
+        if (!user) {
+            return next(new AppError('User not found', 404));
         }
-    },
+        res.status(200).json(user);
+    } catch (error) {
+        next(new AppError(error.message, 500));
+    }
+},
 
     async createUser(req, res, next) {
         try {

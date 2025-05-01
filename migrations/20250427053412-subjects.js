@@ -1,38 +1,33 @@
-import { DataTypes } from 'sequelize';
 'use strict';
-
 
 /** @type {import('sequelize-cli').Migration} */
 export const up = async (queryInterface, Sequelize) => {
   /**
-   * Create table for users
-   * This table will store user information
+   * Create table for subjects
+   * This table will store subject information
    */
-  await queryInterface.createTable('users', {
-    id: {
+  await queryInterface.createTable('subjects', {
+    subject_id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    name: {
+    subject_code: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true
-    },
-    password: {
+    subject_name: {
       type: Sequelize.STRING,
       allowNull: false
     },
-
-    role: {
-      type:Sequelize.STRING,
-      allowNull:false,
+    description: {
+      type: Sequelize.STRING,
+      allowNull: true
     },
-
+    no_of_students: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    },
     createdAt: {
       type: Sequelize.DATE,
       allowNull: false
@@ -46,7 +41,7 @@ export const up = async (queryInterface, Sequelize) => {
 
 export const down = async (queryInterface, Sequelize) => {
   /**
-   * Add reverting command of users table.
+   * Add reverting command of subjects table.
    */
-  await queryInterface.dropTable('users');
+  await queryInterface.dropTable('subjects');
 };

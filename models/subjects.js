@@ -6,29 +6,29 @@ import { DataTypes } from 'sequelize';
  * @param {import('sequelize').DataTypes} DataTypes - The Sequelize DataTypes.
  * @returns {import('sequelize').Model} The User model.
  */
+
 export default (sequelize) => {
-    const User = sequelize.define('User', {
-        id: {
+    const Subject = sequelize.define('Subject', {
+        subject_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        name: {
+        subject_code: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        password: {
+        subject_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        role:{
-            type:DataTypes.STRING,
-            allowNull:false
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        no_of_students:{
+            type:DataTypes.INTEGER,
+            allowNull: false
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -39,9 +39,9 @@ export default (sequelize) => {
             allowNull: false
         }
     }, {
-        tableName: 'users',
+        tableName: 'subjects',
         timestamps: true
     });
 
-    return User;
+    return Subject;
 };
