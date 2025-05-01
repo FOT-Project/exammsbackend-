@@ -1,5 +1,3 @@
-# :construction: Working in progress
-
 # Express.js REST API Starter
 
 ## Project dependencies
