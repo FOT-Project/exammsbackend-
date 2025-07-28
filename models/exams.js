@@ -37,6 +37,12 @@ export default (sequelize, DataTypes) => {
   Exam.associate = (models) => {
     Exam.belongsTo(models.Subject, { foreignKey: 'subject_id' });
     Exam.belongsTo(models.ExamYear, { foreignKey: 'year_id' });
+
+
+    Exam.hasMany(models.ExamDetail, {
+      foreignKey: 'exam_id',
+      sourceKey: 'exam_id'
+    });
   };
 
   return Exam;

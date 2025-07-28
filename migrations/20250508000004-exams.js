@@ -13,15 +13,16 @@ export const up = async (queryInterface, Sequelize) => {
       allowNull: false
     },
     subject_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'subjects',
-        key: 'id'
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-    },
+  type: Sequelize.INTEGER,
+  allowNull: false,
+  references: {
+    model: 'subjects',
+    key: 'subject_id' 
+  },
+  onUpdate: 'CASCADE',
+  onDelete: 'CASCADE'
+}
+,
     year_id: {
       type: Sequelize.INTEGER,
       allowNull: false,

@@ -23,7 +23,11 @@ export default (sequelize, DataTypes) => {
   });
 
   ExamDetail.associate = (models) => {
-    ExamDetail.belongsTo(models.Exam, { foreignKey: 'exam_id' });
+    
+    ExamDetail.belongsTo(models.Exam, {
+      foreignKey: 'exam_id',
+      targetKey: 'exam_id'
+    });
   };
 
   return ExamDetail;
