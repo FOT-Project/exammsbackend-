@@ -3,6 +3,7 @@ import cors from 'cors';
 import HomeRouter from "./routes/home.route.js";
 import UserRouter from './routes/user.route.js';
 import SubjectRouter from './routes/subject.route.js'
+import ExamRouter from './routes/exam.route.js'
 
 // load environment variables
 import dotenv from 'dotenv';
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use("/", HomeRouter);
 app.use("/users", UserRouter);
 app.use("/subjects",SubjectRouter)
+app.use("/exams", ExamRouter)
 
 // handle 404 errors
 // This middlware hit, if not any routes is matched.
